@@ -1,0 +1,26 @@
+# Namespaced project name that the target belongs to
+project: webdis
+
+# Target name (should be unique within the project)
+target: webdis
+
+# Base image to run the binary in.
+image: ghcr.io/ladylandshark/webdis:latest
+
+# Testsuite info
+#testsuite:
+#  - https://mayhem.forallsecure.com/ladylandshark/webdis/testsuite.tar
+#  - file://webdis/micsamples
+
+
+# List of commands used to test the target
+cmds:
+
+    # Command used to start the target, "@@" is the input file
+    # (when "@@" is omitted Mayhem defaults to stdin inputs)
+    - cmd: webdis /etc/webdis.prod.json
+      network:
+        url: tcp://localhost:7379 
+        client: False
+        timeout: 2.0
+
